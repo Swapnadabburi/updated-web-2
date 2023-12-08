@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.3.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { font-family: "Liberation Mono", monospace; font-size: 10pt; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;base href=&quot;https://swapnadabburi.github.io/swapna-web2/&quot;&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Birthday Wishes&lt;/title&gt;
+  &lt;style&gt;
+    /* CSS styling for the background */
+    body {
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    /* CSS styling for the header */
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    /* CSS styling for the birthday wishes container */
+    .birthday-wishes-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    /* CSS styling for the birthday wishes card */
+    .birthday-wishes-card {
+      background-color: #fff;
+      width: 300px;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+    }
+    /* CSS styling for the text fields */
+    .text-fields {
+      margin-top: 20px;
+      text-align: center;
+    }
+    /* CSS styling for the preview button */
+    .preview-button {
+      margin-top: 20px;
+      text-align: center;
+    }
+    /* CSS styling for the footer */
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    /* CSS styling for the falling flowers animation */
+    .falling-flowers {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .falling-flower {
+      position: absolute;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background-image: url('flower.png');
+      background-size: cover;
+      animation: fall infinite linear;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;h1&gt;Birthday Wishes&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;birthday-wishes-container&quot;&gt;
+    &lt;!-- Birthday wishes cards will be added dynamically--&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;text-fields&quot;&gt;
+    &lt;label for=&quot;name-input&quot;&gt;Enter Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name-input&quot; placeholder=&quot;Enter Name&quot;&gt;
+    &lt;label for=&quot;message-input&quot;&gt;Enter Birthday Message&lt;/label&gt;
+    &lt;textarea id=&quot;message-input&quot; placeholder=&quot;Enter Birthday Message&quot; data-gramm=&quot;false&quot; wt-ignore-input=&quot;true&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;preview-button&quot;&gt;
+    &lt;button onclick=&quot;createBirthdayWish()&quot;&gt;Preview Birthday Wish&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;falling-flowers&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;p&gt;&copy; 2023 Birthday Wishes App&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    // JavaScript code for creating birthday wishes
+    function createBirthdayWish() {
+      var name = document.getElementById('name-input').value;
+      var message = document.getElementById('message-input').value;
+
+      if (name &amp;&amp; message) {
+        var birthdayWishesContainer = document.querySelector('.birthday-wishes-container');
+        
+        // Create a new birthday wishes card
+        var card = document.createElement('div');
+        card.className = 'birthday-wishes-card';
+        
+        // Set the content of the card
+        var cardContent = document.createElement('p');
+        cardContent.innerHTML = `Happy Birthday, ${name}!&lt;br&gt;${message}`;
+        card.appendChild(cardContent);
+        
+        birthdayWishesContainer.appendChild(card);
+
+        // Clear the text fields after creating the birthday wish
+        document.getElementById('name-input').value = '';
+        document.getElementById('message-input').value = '';
+
+        // Trigger falling flowers animation
+        triggerFallingFlowers();
+      } else {
+        alert('Please enter a name and message before creating a birthday wish.');
+      }
+    }
+
+    // JavaScript code for falling flowers animation
+    function triggerFallingFlowers() {
+      var fallingFlowerContainer = document.querySelector('.falling-flowers');
+      
+      // Create multiple falling flower elements
+      for (var i = 0; i &lt; 10; i++) {
+        var flower = document.createElement('div');
+        flower.className = 'falling-flower';
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.animationDuration = Math.random() * 5 + 3 + 's';
+        flower.style.animationDelay = Math.random() * 2 + 's';
+        fallingFlowerContainer.appendChild(flower);
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
